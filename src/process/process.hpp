@@ -17,4 +17,6 @@ void contrastStretch(
 
 void histogramEqualize(Mat &img);
 
+void clahe(Mat &img);
+
 #endif

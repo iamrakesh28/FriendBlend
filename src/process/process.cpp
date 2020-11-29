@@ -108,3 +108,15 @@ void histogramEqualize(Mat &img) {
 
     cvtColor(img, img, COLOR_YCrCb2BGR);
 }
+
+void clahe(Mat &img) {
+    cvtColor(img, img, COLOR_BGR2YCrCb);
+
+    vector<Mat> channelMatVec;
+
+    split(img, channelMatVec);
+    createCLAHE()->apply(channelMatVec[0], channelMatVec[0]);
+    merge(channelMatVec, img);
+
+    cvtColor(img, img, COLOR_YCrCb2BGR);
+}
