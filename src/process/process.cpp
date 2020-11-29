@@ -100,12 +100,11 @@ void contrastStretch(Mat &img, ContrastStretchMethod method) {
 void histogramEqualize(Mat &img) {
     cvtColor(img, img, COLOR_BGR2YCrCb);
 
-    Range yChannelRange[] = {
-        Range::all(),
-        Range::all(),
-        Range(0, 1)
-    };
+    vector<Mat> channelMatVec;
 
-    equalizeHist(img(yChannelRange), img(yChannelRange));
+    split(img, channelMatVec);
+    equalizeHist(channelMatVec[0], channelMatVec[0]);
+    merge(channelMatVec, img);
+
     cvtColor(img, img, COLOR_YCrCb2BGR);
 }
