@@ -5,7 +5,15 @@
 
 using namespace cv;
 
-void contrastStretch(Mat &img);
+enum ContrastStretchMethod {
+    EACH_CHANNEL_INDEPENDENT,
+    ON_Y_CHANNEL
+};
+
+void contrastStretch(
+    Mat &img, 
+    ContrastStretchMethod method = ON_Y_CHANNEL
+);
 
 void histogramEqualize(Mat &img);
 
