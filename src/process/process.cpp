@@ -42,13 +42,6 @@ MinMax getMinMax(const Mat &img) {
     return minMax;
 }
 
-void contrastStretch(Mat &img, ContrastStretchMethod method) {
-    if(method == EACH_CHANNEL_INDEPENDENT)
-        contrastStretchIndependent(img);
-    else
-        contrastStretchY(img);
-}
-
 void contrastStretchIndependent(Mat &img) {
     MinMax minMax = getMinMax(img);
     double diff[3];
@@ -95,6 +88,13 @@ void contrastStretchY(Mat &img) {
     }
 
     cvtColor(img, img, COLOR_YCrCb2BGR);
+}
+
+void contrastStretch(Mat &img, ContrastStretchMethod method) {
+    if(method == EACH_CHANNEL_INDEPENDENT)
+        contrastStretchIndependent(img);
+    else
+        contrastStretchY(img);
 }
 
 void histogramEqualize(Mat &img) {

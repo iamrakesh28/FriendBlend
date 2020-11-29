@@ -10,10 +10,17 @@ using namespace cv;
 int main() {
 
     string imgPath = "../images/testImg.jpeg";
-    Mat image = imread(imgPath, IMREAD_COLOR);
+    Mat inputImage = imread(imgPath, IMREAD_COLOR);
+    Mat image;
 
-    contrastStretch(image);
-    imshow("Contrast Stretched Image", image);
+    image = inputImage.clone();
+    contrastStretch(image, ON_Y_CHANNEL);
+    imshow("Contrast Stretched Image - Y Channel", image);
+    (void) waitKey(0);
+
+    image = inputImage.clone();
+    contrastStretch(image, EACH_CHANNEL_INDEPENDENT);
+    imshow("Contrast Stretched Image - Y Channel", image);
     (void) waitKey(0);
 
     return 0;
