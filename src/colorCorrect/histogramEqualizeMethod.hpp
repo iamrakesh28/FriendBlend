@@ -1,5 +1,5 @@
-#ifndef HISTOGRAM_EQUALIZE_HPP
-#define HISTOGRAM_EQUALIZE_HPP
+#ifndef HISTOGRAM_EQUALIZE_METHOD_HPP
+#define HISTOGRAM_EQUALIZE_METHOD_HPP
 
 #include <opencv2/core/mat.hpp>
 #include <colorCorrect/colorCorrection.hpp>
