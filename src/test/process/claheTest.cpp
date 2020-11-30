@@ -13,7 +13,7 @@ int main() {
     Mat image = imread(imgPath, IMREAD_COLOR);
 
     clahe(image);
-    imshow("Histogram Equalized Image", image);
+    imshow("CLAHE performed on Image", image);
     (void) waitKey(0);
 
     return 0;
