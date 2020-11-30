@@ -33,3 +33,7 @@ test_colorCorrect_histogramEqualize: src/process/process.cpp src/colorCorrect/hi
 test_colorCorrect_clahe: src/process/process.cpp src/colorCorrect/claheMethod.cpp src/test/colorCorrect/claheMethod.cpp
 	g++ ${CPP_FLAGS} src/process/process.cpp src/colorCorrect/claheMethod.cpp src/test/colorCorrect/claheMethod.cpp -o bin/claheMethod
 	./bin/claheMethod
+
+# Face Body Detection
+test_faceBodyDetection_haarCascade: src/faceBodyDetection/
+

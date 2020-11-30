@@ -2,65 +2,65 @@
 #define UTILITY_HPP
 
 struct Position {
+    /** row and column */
     int r, c;
 
-    Position(int r_, int c_):
-        r(r_), c(c_) {}
+    /** Construct Position using row and column values */
+    Position(int r_, int c_);
 
-    Position(const Position &pos):
-        r(pos.r), c(pos.c) {}
+    /** Copy Constructor */
+    Position(const Position &pos);
 
+    /** Destructor */
     ~Position() {}
 
-    const Position& operator= (const Position &pos) {
-        r = pos.r, c = pos.c;
-        return *this;
-    }
+    /** Copy Assignment Operator */
+    const Position& operator= (const Position &pos);
 };
 
 struct BoundingBox {
+    /** Top left and Bottom right positions */
     Position topLeft, bottomRight;
 
+    /** Construct BoundingBox Top left and Bottom right positions */
     BoundingBox(
         const Position &topLeft_, 
         const Position &bottomRight_
-    ):
-        topLeft(topLeft_), bottomRight(bottomRight_) {}
+    );
 
-    BoundingBox(const BoundingBox &boundingBox):
-        topLeft(boundingBox.topLeft),
-        bottomRight(boundingBox.bottomRight) {}
+    /** Copy Constructor */
+    BoundingBox(const BoundingBox &boundingBox);
 
-    const BoundingBox& operator= (const BoundingBox &boundingBox) {
-        topLeft = boundingBox.topLeft;
-        bottomRight = boundingBox.bottomRight;
-        return *this;
-    }
-
+    /** Destructor */
     ~BoundingBox() {}
+
+    /** Copy Assignment Operator */
+    const BoundingBox& operator= (const BoundingBox &boundingBox);    
 };
 
 struct FaceBodyBoundingBoxes {
+    /** Bounding Boxes for Face and Body */
     BoundingBox face, body;
 
+    /** 
+     * Construct FaceBodyBoundingBoxes using bounding boxes
+     * for face and body
+     */
     FaceBodyBoundingBoxes(
         const BoundingBox &face_, 
         const BoundingBox &body_
-    ):
-        face(face_), body(body_) {}
+    );
 
-    FaceBodyBoundingBoxes(const FaceBodyBoundingBoxes &faceBody):
-        face(faceBody.face), body(faceBody.body) {}
+    /** Copy Constructor */
+    FaceBodyBoundingBoxes(const FaceBodyBoundingBoxes &faceBody);
 
+    /** Destructor */
+    ~FaceBodyBoundingBoxes();
+
+    /** Copy Assignment Operator */
     const FaceBodyBoundingBoxes& operator= (
         const FaceBodyBoundingBoxes &faceBody
-    ) {
-        face = faceBody.face;
-        body = faceBody.body;
-        return *this;
-    }
-
-    ~FaceBodyBoundingBoxes() {}
+    );
 };
 
 struct MatchedKeypoints {Position pos1, pos2;};
