@@ -8,7 +8,7 @@ ClaheMethod::ClaheMethod() {}
 
 ClaheMethod::~ClaheMethod() {}
 
-void ClaheMethods::colorCorrect(Mat &img1, Mat &img2) {
+void ClaheMethod::colorCorrect(Mat &img1, Mat &img2) {
     clahe(img1);
     clahe(img2);
 }

@@ -2,6 +2,7 @@
 #define COLOR_CORRECT_HPP
 
 #include "colorCorrect/colorCorrection.hpp"
-#include "colorCorrect/histogramEqualize.hpp"
+#include "colorCorrect/histogramEqualizeMethod.hpp"
+#include "colorCorrect/claheMethod.hpp"
 
 #endif
