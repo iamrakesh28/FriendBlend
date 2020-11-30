@@ -10,8 +10,8 @@ using namespace cv;
 
 int main() {
 
-    Mat imgToAlign = imread("images/rotated_vaibhav.jpg", IMREAD_COLOR);
-    Mat imgReference = imread("images/vaibhav.jpg", IMREAD_COLOR);
+    Mat imgToAlign = imread("images/md_rotate.jpg", IMREAD_COLOR);
+    Mat imgReference = imread("images/md.jpg", IMREAD_COLOR);
 
     assert (!imgToAlign.empty());
     assert (!imgReference.empty());
