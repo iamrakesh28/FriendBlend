@@ -6,6 +6,7 @@
 #include <opencv2/imgproc.hpp>
 #include <faceBodyDetect/faceBodyDetect.hpp>
 #include <utility/utility.hpp>
+#include <process/process.hpp>
 
 using namespace std;
 using namespace cv;
@@ -26,7 +27,7 @@ void testOnImage(const string &imgPath) {
     // Draw Bounding Box about the body
     rectangle(
         image, faceBody.body.topLeft, faceBody.body.bottomRight, 
-        Scalar(0, 255, 0), 2, LINE_8
+        Scalar(255, 0, 0), 2, LINE_8
     );
 
     imshow("Face and Body Detection Image", image);
@@ -36,7 +37,10 @@ void testOnImage(const string &imgPath) {
 int main() {
 
     vector<string> imagePaths = {
-        "images/alexxis.jpg"
+        "images/devansh.jpg",
+        "images/rakesh.jpg",
+        "images/vaibhav.jpg",
+        "images/ahmed.jpg"
     };
 
     for(const string &imgPath : imagePaths)
