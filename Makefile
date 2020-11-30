@@ -35,5 +35,8 @@ test_colorCorrect_clahe: src/process/process.cpp src/colorCorrect/claheMethod.cp
 	./bin/claheMethod
 
 # Face Body Detection
-test_faceBodyDetection_haarCascade: src/faceBodyDetection/
 
+# Haar Cascade
+test_faceBodyDetect_haarCascade: src/utility/utility.cpp src/faceBodyDetect/haarCascade.cpp src/test/faceBodyDetect/haarCascadeTest.cpp
+	g++ ${CPP_FLAGS} src/utility/utility.cpp src/faceBodyDetect/haarCascade.cpp src/test/faceBodyDetect/haarCascadeTest.cpp -o bin/haarCascadeTest
+	./bin/haarCascadeTest

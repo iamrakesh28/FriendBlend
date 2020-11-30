@@ -4,6 +4,8 @@
 #include <opencv2/core/mat.hpp>
 #include "utility/utility.hpp"
 
+using namespace cv;
+
 /** Face and Body Detection */
 class FaceBodyDetection {
 

@@ -1,3 +1,4 @@
+#include <opencv2/core/types.hpp>
 #include <utility/utility.hpp>
 
 /** Position */
@@ -13,6 +14,10 @@ Position::~Position() {}
 const Position& Position::operator= (const Position &pos) {
     r = pos.r, c = pos.c;
     return *this;
+}
+
+Position::operator cv::Point() {
+    return cv::Point(c, r);
 }
 
 /** BoundingBox */
@@ -50,7 +55,7 @@ FaceBodyBoundingBoxes::FaceBodyBoundingBoxes(
 
 FaceBodyBoundingBoxes::~FaceBodyBoundingBoxes() {}
 
-const FaceBodyBoundingBoxes::FaceBodyBoundingBoxes& operator= (
+const FaceBodyBoundingBoxes& FaceBodyBoundingBoxes::operator= (
     const FaceBodyBoundingBoxes &faceBody
 ) {
     face = faceBody.face;

@@ -4,7 +4,7 @@
 #include <iostream> 
 #include <algorithm>
 #include <cassert>
-#include "faceBodyDetection/haarCascade.hpp"
+#include "faceBodyDetect/haarCascade.hpp"
 
 using namespace std;
 using namespace cv; 
@@ -26,7 +26,7 @@ static bool comparator(Rect &recta, Rect &rectb) {
 	return recta.height * recta.width > recta.height * rectb.width;
 }
  
-FaceBodyBoundingBoxes HaarCascade::detect(Mat &img) {
+FaceBodyBoundingBoxes HaarCascade::detect(const Mat &img) {
 
 	Mat imgGray;
 	cvtColor(img, imgGray, COLOR_BGR2GRAY);
@@ -52,13 +52,13 @@ FaceBodyBoundingBoxes HaarCascade::detect(Mat &img) {
 	);
 
 	Position bodyTopLeft (
-		bigFace.x - bigFace.width,
-		bigFace.y - bigFace.height
+		bigFace.y - bigFace.height,
+		bigFace.x - bigFace.width
 	);
 
 	Position bodyBottomRight (
-		bigFace.x + 2 * bigFace.width,
-		img.size().height - 1
+		img.size().height - 1,
+		bigFace.x + 2 * bigFace.width
 	);
 
 	FaceBodyBoundingBoxes faceBodyBoundingBoxes (

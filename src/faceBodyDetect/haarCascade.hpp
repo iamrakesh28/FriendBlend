@@ -1,10 +1,10 @@
 #ifndef HAAR_CASCADE_HPP
-#define HAAR_CASCADE_HPPs
+#define HAAR_CASCADE_HPP
 
 #include <opencv2/core/mat.hpp>
 #include <opencv2/objdetect.hpp>
 #include <string>
-#include "faceBodyDetection/faceBodyDetection.hpp"
+#include "faceBodyDetect/faceBodyDetection.hpp"
 #include "utility/utility.hpp"
 
 using namespace std;
@@ -35,7 +35,7 @@ class HaarCascade : public FaceBodyDetection {
      * @param img The image in BGR format
      * @return Bounding Boxes for the Face and Body
      */
-	virtual FaceBodyBoundingBoxes detect(Mat &img);
+	virtual FaceBodyBoundingBoxes detect(const Mat &img);
 };
 
 #endif

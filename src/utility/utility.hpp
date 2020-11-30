@@ -1,6 +1,8 @@
 #ifndef UTILITY_HPP
 #define UTILITY_HPP
 
+#include <opencv2/core/types.hpp>
+
 struct Position {
     /** row and column */
     int r, c;
@@ -12,10 +14,13 @@ struct Position {
     Position(const Position &pos);
 
     /** Destructor */
-    ~Position() {}
+    ~Position();
 
     /** Copy Assignment Operator */
     const Position& operator= (const Position &pos);
+
+    /** Conversion to object of Opencv Point class */
+    operator cv::Point();
 };
 
 struct BoundingBox {
@@ -32,7 +37,7 @@ struct BoundingBox {
     BoundingBox(const BoundingBox &boundingBox);
 
     /** Destructor */
-    ~BoundingBox() {}
+    ~BoundingBox();
 
     /** Copy Assignment Operator */
     const BoundingBox& operator= (const BoundingBox &boundingBox);    
