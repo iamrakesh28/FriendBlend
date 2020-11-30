@@ -10,6 +10,12 @@
 using namespace std;
 using namespace cv;
 
+/**
+ * Prunes keypoints which are present in the bounding box
+ * 
+ * @param keypoints Vector of keypoints, this itself is modified
+ * @param body Body bounding box
+ */
 void prunePoints(
     vector<KeyPoint> &keypoints,
     const BoundingBox &body
@@ -32,6 +38,12 @@ void prunePoints(
     keypoints = keyOut;
 }
 
+/**
+ * Prune the matches by removing a fraction of the least matched matches
+ * 
+ * @param matches Vector of matches, this itself is modified
+ * @param pruneFraction Fraction of least matched matches to remove
+ */
 void pruneMatches(
     vector<DMatch> &matches,
     double pruneFraction
@@ -43,6 +55,16 @@ void pruneMatches(
     matches.erase(matches.begin() + numGoodMatches, matches.end());
 }
 
+/**
+ * Perform keypoint detection using ORB algorithm and prune results
+ * based on the provided bounding box for the person body
+ * 
+ * @param orb ORB algorithm interface
+ * @param image The image, it is a Grayscale image
+ * @param body The body bounding box
+ * @param keypoints Keypoints would be outputted in this variable
+ * @param descriptors Descriptors would be outputted in this variable
+ */
 void keypointDetection(
     Ptr<Feature2D> &orb, Mat &image, const BoundingBox &body,
     vector<KeyPoint> &keypoints, Mat &descriptors
@@ -52,6 +74,14 @@ void keypointDetection(
     orb->compute(image, keypoints, descriptors);
 }
 
+/**
+ * Performs Keypoint Matching using Brute Force Matching
+ * and prunes least matched matches 
+ * 
+ * @param descriptors1 Descriptors of the first image
+ * @param descriptors2 Descriptors of the second image
+ * @param matches Matches would be outputted in this variable
+ */
 void keypointMatching(
     Mat &descriptors1,
     Mat &descriptors2,
@@ -67,8 +97,8 @@ void keypointMatching(
 void alignImage(
     Mat &imgToAlign, 
     const Mat &imgReference, 
-    const BoundingBox &body1,
-    const BoundingBox &body2
+    const BoundingBox &bodyAlign,
+    const BoundingBox &bodyReference
 ) {
     Mat imgToAlignGray, imgReferenceGray;
     cvtColor(imgToAlign, imgToAlignGray, COLOR_BGR2GRAY);
@@ -78,8 +108,8 @@ void alignImage(
 
     vector<KeyPoint> keypoints1, keypoints2;
     Mat descriptors1, descriptors2;
-    keypointDetection(orb, imgToAlignGray, body1, keypoints1, descriptors1);
-    keypointDetection(orb, imgReferenceGray, body2, keypoints2, descriptors2);
+    keypointDetection(orb, imgToAlignGray, bodyAlign, keypoints1, descriptors1);
+    keypointDetection(orb, imgReferenceGray, bodyReference, keypoints2, descriptors2);
 
     vector<DMatch> matches;
     keypointMatching(descriptors1, descriptors2, matches);
