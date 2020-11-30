@@ -1,0 +1,5 @@
+bin/*
+!bin/README.md
+src/.vscode
+src/.vscode/*
+**/.DS_STORE
