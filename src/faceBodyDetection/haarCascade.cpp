@@ -3,6 +3,7 @@
 #include <opencv2/imgproc.hpp>
 #include <iostream> 
 #include <algorithm>
+#include <cassert>
 #include "faceBodyDetection/haarCascade.hpp"
 
 using namespace std;
@@ -15,10 +16,7 @@ HaarCascade::HaarCascade() {
 		"haarcascades/haarcascade_frontalface_alt.xml";
 		
 	// load the face cascade
-	if (!faceCascade.load(faceCascadePath)) {
-		cout << "--(!)Error loading face cascade\n";
-		exit(0);
-	};
+	assert (faceCascade.load(faceCascadePath));
 }
 
 HaarCascade::~HaarCascade() {}
@@ -38,20 +36,29 @@ FaceBodyBoundingBoxes HaarCascade::detect(Mat &img) {
 	faceCascade.detectMultiScale(imgGray, faces);
 	sort(faces.begin(), faces.end(), comparator);
 	
-	if (faces.size() <= 0)
-		return;
+	assert (faces.size() > 0);
 		
 	Rect bigFace = faces[0];
-	int faceWidth = bigFace.width;
-	int faceHeight = bigFace.height;
-	Point topLeft(bigFace.x - faceWidth, bigFace.y - faceHeight);
-	Point bottomRight(bigFace.x + 2 * faceWidth, img.size().height);
 
-	Position faceTopLeft (bigFace.y - faceHeight, bigFace.x - faceWidth);
-	Position faceBottomRight;
+	Position faceTopLeft (
+		bigFace.y, 
+		bigFace.x
+	);
 
-	Position bodyTopLeft;
-	Position bodyBottomRight;
+	Position faceBottomRight (
+		bigFace.y + bigFace.height - 1,
+		bigFace.x + bigFace.width - 1
+	);
+
+	Position bodyTopLeft (
+		bigFace.x - bigFace.width,
+		bigFace.y - bigFace.height
+	);
+
+	Position bodyBottomRight (
+		bigFace.x + 2 * bigFace.width,
+		img.size().height - 1
+	);
 
 	FaceBodyBoundingBoxes faceBodyBoundingBoxes (
 		BoundingBox(faceTopLeft, faceBottomRight),

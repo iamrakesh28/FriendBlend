@@ -23,7 +23,7 @@ class HaarCascade : public FaceBodyDetection {
 
 	virtual ~HaarCascade();
 	
-	virtual void FaceBodyBoundingBoxes detect(Mat &img);
+	virtual FaceBodyBoundingBoxes detect(Mat &img);
 };
 
 #endif
