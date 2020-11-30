@@ -9,7 +9,7 @@ using namespace cv;
 
 int main() {
 
-    string imgPath = "../images/vaderBright.jpeg";
+    string imgPath = "images/vaderBright.jpeg";
     Mat image = imread(imgPath, IMREAD_COLOR);
 
     clahe(image);
