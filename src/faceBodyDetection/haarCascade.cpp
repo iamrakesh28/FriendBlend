@@ -21,6 +21,7 @@ HaarCascade::HaarCascade() {
 
 HaarCascade::~HaarCascade() {}
 
+/** Comparator for sorting rectangles based on area */
 static bool comparator(Rect &recta, Rect &rectb) {
 	return recta.height * recta.width > recta.height * rectb.width;
 }
