@@ -27,10 +27,11 @@ void prunePoints(
 
     for(const KeyPoint &keypoint : keypoints) {
         Point2f point = keypoint.pt;
+        // Keypoint must lie outside of bounding box
         if(
-            topLeft.x <= point.x && point.x <= bottomRight.x
-            &&
-            topLeft.y <= point.y && point.y <= bottomRight.y
+            topLeft.x > point.x || point.x > bottomRight.x
+            ||
+            topLeft.y > point.y || point.y > bottomRight.y
         )
             keyOut.push_back(keypoint);
     }
