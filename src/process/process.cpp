@@ -7,10 +7,16 @@ using namespace std;
 
 using namespace cv;
 
+/**
+ * Return type of getMinMax function
+ * 
+ * It stores the minimum and maximum values along all three channels
+ */
 struct MinMax {
     Vec3b minValues, maxValues;
 };
 
+/** Computes minimum accross all channels */
 Vec3b min(Vec3b u, Vec3b v) {
     return Vec3b(
         min(u[0], v[0]),
@@ -19,6 +25,7 @@ Vec3b min(Vec3b u, Vec3b v) {
     );
 } 
 
+/** Computes maximum accross all channels */
 Vec3b max(Vec3b u, Vec3b v) {
     return Vec3b(
         max(u[0], v[0]),
@@ -27,6 +34,10 @@ Vec3b max(Vec3b u, Vec3b v) {
     );
 } 
 
+/** 
+ * Get minimum and maximum intensity values along all channels
+ * of the provided image
+ */
 MinMax getMinMax(const Mat &img) {
     MinMax minMax;
     minMax.minValues = Vec3b(255, 255, 255);
@@ -42,6 +53,11 @@ MinMax getMinMax(const Mat &img) {
     return minMax;
 }
 
+/**
+ * Performs Contrast Stretching Independently for each channel
+ * 
+ * @param img The image in BGR format, this image is itself modified
+ */
 void contrastStretchIndependent(Mat &img) {
     MinMax minMax = getMinMax(img);
     double diff[3];
@@ -67,6 +83,13 @@ void contrastStretchIndependent(Mat &img) {
     }
 }
 
+/**
+ * Performs Contrast Stretching on Y channel after converting the
+ * image from BGR to YCbCr. Then finally the image is converted back
+ * to BGR
+ * 
+ * @param img The image in BGR format, this image is itself modified
+ */
 void contrastStretchY(Mat &img) {
     cvtColor(img, img, COLOR_BGR2YCrCb);
 
