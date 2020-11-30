@@ -40,3 +40,8 @@ test_colorCorrect_clahe: src/process/process.cpp src/colorCorrect/claheMethod.cp
 test_faceBodyDetect_haarCascade: src/process/process.cpp src/utility/utility.cpp src/faceBodyDetect/haarCascade.cpp src/test/faceBodyDetect/haarCascadeTest.cpp
 	g++ src/process/process.cpp src/utility/utility.cpp src/faceBodyDetect/haarCascade.cpp src/test/faceBodyDetect/haarCascadeTest.cpp -o bin/haarCascadeTest ${CPP_FLAGS}
 	./bin/haarCascadeTest
+
+# Align
+test_align: src/utility/utility.cpp src/align/align.cpp src/faceBodyDetect/haarCascade.cpp src/test/align/alignTest.cpp
+	g++ src/utility/utility.cpp src/align/align.cpp src/faceBodyDetect/haarCascade.cpp src/test/align/alignTest.cpp -o bin/alignTest ${CPP_FLAGS}
+	./bin/alignTest
