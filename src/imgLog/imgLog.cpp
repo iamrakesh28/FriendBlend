@@ -18,7 +18,7 @@ void ImageLog::logImage(
 ) {
     string addCounter = "";
     if(addCounterToImageName)
-        addCounter += to_string(counter);
+        addCounter += "_" + to_string(counter);
 
     if(imgLog)
         imwrite(logDir + imageName + addCounter + ".jpg", image);

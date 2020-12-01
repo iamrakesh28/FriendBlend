@@ -3,3 +3,4 @@ bin/*
 src/.vscode
 src/.vscode/*
 **/.DS_STORE
+logs/*
