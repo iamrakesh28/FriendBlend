@@ -3,6 +3,7 @@
 #include <opencv2/core/types.hpp>
 #include <opencv2/imgproc.hpp>
 #include <utility/utility.hpp>
+#include <imgLog/imgLog.hpp>
 #include <blend/blend.hpp>
 
 using namespace cv;
@@ -65,6 +66,8 @@ Mat grabCut(
         GC_INIT_WITH_MASK
     );
 
+    ImageLog::getLogger().logImage(mask, "grabCutMask");
+
     // Place foreground on background
     for(int r = 0; r < outImg.rows;r++) {
         for(int c = 0;c < outImg.cols;c++) {
@@ -74,6 +77,8 @@ Mat grabCut(
                 outImg.at<Vec3b>(r, c) = personImg.at<Vec3b>(r, c);
         }
     }
+
+    ImageLog::getLogger().logImage(outImg, "grabCutOut");
 
     return outImg;
 }
@@ -147,6 +152,8 @@ Mat alphaBlend(
             outImg.at <Vec3b> (row, col) = newColor;
         }
     }
+
+    ImageLog::getLogger().logImage(outImg, "alphaBlendOut");
     
     return outImg;
 }
@@ -184,7 +191,14 @@ Mat blend(
 
     int distance = faceBody2.body.topLeft.c - faceBody1.body.bottomRight.c;
 
+    Mat outImg;
+
     if(distance < DISTANCE_THRESHOLD)
-        return grabCut(img1, img2, faceBody1, faceBody2);
-    return alphaBlend(img1, img2, faceBody1, faceBody2);
+        outImg = grabCut(img1, img2, faceBody1, faceBody2);
+    else
+        outImg = alphaBlend(img1, img2, faceBody1, faceBody2);
+
+    ImageLog::getLogger().logImage(outImg, "blendOut");
+
+    return outImg;
 }

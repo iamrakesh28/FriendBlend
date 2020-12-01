@@ -5,8 +5,8 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/features2d.hpp>
 #include <opencv2/imgproc.hpp>
-#include <align/align.hpp>
 #include <imgLog/imgLog.hpp>
+#include <align/align.hpp>
 
 using namespace std;
 using namespace cv;
