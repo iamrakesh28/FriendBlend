@@ -14,8 +14,8 @@ const int DISTANCE_THRESHOLD = 200;
 
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,
-    const FaceBodyBoundingBoxes &faceBody1,
-    const FaceBodyBoundingBoxes &faceBody2
+    FaceBodyBoundingBoxes faceBody1,
+    FaceBodyBoundingBoxes faceBody2
 );
 
 #endif

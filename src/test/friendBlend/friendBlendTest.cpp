@@ -12,7 +12,14 @@ using namespace cv;
 
 int main() {
 
-    vector<string> testDir = {"images/test1", "images/test2"};
+    vector<string> testDir = {
+        "images/test1",
+        "images/test2",
+        "images/test3",
+        "images/test4",
+        "images/test5",
+        "images/test6"
+    };
 
     for(const string &dir : testDir) {
         Mat friend1 = imread(dir + "/friend1.jpg", IMREAD_COLOR);

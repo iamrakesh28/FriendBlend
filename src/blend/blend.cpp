@@ -169,8 +169,8 @@ Mat alphaBlend(
  */
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,
-    const FaceBodyBoundingBoxes &faceBody1,
-    const FaceBodyBoundingBoxes &faceBody2
+    FaceBodyBoundingBoxes faceBody1,
+    FaceBodyBoundingBoxes faceBody2
 ) {
     assert (
         inputImg1.rows == inputImg2.rows
@@ -187,6 +187,9 @@ Mat blend(
     else {
         img1 = inputImg2.clone();
         img2 = inputImg1.clone();
+
+        // swap bounding boxes
+        swap(faceBody1, faceBody2);
     }
 
     int distance = faceBody2.body.topLeft.c - faceBody1.body.bottomRight.c;
