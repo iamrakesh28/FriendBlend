@@ -9,7 +9,8 @@
 using namespace std;
 using namespace cv; 
 	
-HaarCascade::HaarCascade() {
+HaarCascade::HaarCascade(float scale_) : scale(scale_) {
+
 	// path of the face cascade
 	string faceCascadePath = 
 		"/usr/local/share/opencv4/"
@@ -34,7 +35,7 @@ FaceBodyBoundingBoxes HaarCascade::detect(const Mat &img) {
 	
 	// Detect faces
 	std::vector <Rect> faces;
-	faceCascade.detectMultiScale(imgGray, faces);
+	faceCascade.detectMultiScale(imgGray, faces, scale);
 	sort(faces.begin(), faces.end(), comparator);
 	
 	assert (faces.size() > 0);
