@@ -6,13 +6,15 @@
 using namespace std;
 using namespace cv;
 
+ImageLog* ImageLog::logger = nullptr;
+
 ImageLog::ImageLog():
     logDir("logs/"), counter(0),
     imgLog(false), addCounterToImageName(true) {}
 
 void ImageLog::logImage(
     const Mat &image, 
-    const string &imageName = "image"
+    const string imageName
 ) {
     string addCounter = "";
     if(addCounterToImageName)
@@ -24,7 +26,7 @@ void ImageLog::logImage(
     counter ++;
 }
 
-static ImageLog& ImageLog::getLogger() {
+ImageLog& ImageLog::getLogger() {
     if(logger == nullptr)
         logger = new ImageLog();
 

@@ -15,7 +15,7 @@ class ImageLog {
     int counter;
     bool imgLog, addCounterToImageName;
 
-    static ImageLog *logger = nullptr;
+    static ImageLog *logger;
 
     ImageLog();
 
@@ -23,9 +23,9 @@ class ImageLog {
 
     ~ImageLog();
 
-    inline void shouldLog(bool imgLog_) {imgLog = imgLog_;}
+    inline void enableLogging(bool imgLog_) {imgLog = imgLog_;}
 
-    inline bool isLogging() {return imgLog;}
+    inline bool enabled() {return imgLog;}
 
     inline void shouldAddCounterToImageName(bool addCounterToImageName_) {
         addCounterToImageName = addCounterToImageName_;
@@ -33,7 +33,7 @@ class ImageLog {
 
     void logImage(
         const Mat &image, 
-        const string &imageName = "image"
+        const string imageName = "image"
     );
 
     static ImageLog& getLogger();
