@@ -140,6 +140,7 @@ Mat blend(
 
     int distance = faceBody2.body.topLeft.c - faceBody1.body.bottomRight.c;
 
-    if(distance >= DISTANCE_THRESHOLD)
+    if(distance < DISTANCE_THRESHOLD)
         return grabCut(img1, img2, faceBody1, faceBody2);
+    return alphaBlend(img1, img2, faceBody1, faceBody2);
 }
