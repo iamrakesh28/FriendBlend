@@ -14,7 +14,7 @@ using namespace cv;
 void testOnImage(const string &imgPath) {
     Mat image = imread(imgPath, IMREAD_COLOR);
 
-    FaceBodyDetection *faceBodyDetection = new HaarCascade(1.27);
+    FaceBodyDetection *faceBodyDetection = new HaarCascade();
     FaceBodyBoundingBoxes faceBody = faceBodyDetection->detect(image);
     delete faceBodyDetection;
 
@@ -36,19 +36,16 @@ void testOnImage(const string &imgPath) {
 
 int main() {
 
-  
     vector<string> imagePaths = {
         "images/test1/friend1.jpg",
         "images/test1/friend2.jpg",
-	"images/friend1.png",
-        "images/friend2.png",
-        "images/devansh.jpg",
-        "images/rakesh.jpg",
+	    "images/devansh1.jpg",
+        "images/devansh2.jpg",
+        "images/rahul1.jpg",
+        "images/rahul2.jpg",
         "images/md.jpg",
         "images/vaibhav.jpg",
         "images/ahmed.jpg",
-        "images/friend1.png",
-        "images/friend2.png",
         "images/alexxis.jpg"
     };
     

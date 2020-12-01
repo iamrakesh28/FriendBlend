@@ -9,7 +9,6 @@ Req=src/utility/utility.cpp src/process/process.cpp src/colorCorrect/claheMethod
 
 # Contrast Stretching
 test_process_constrastStretch: src/process/process.cpp src/test/process/constrastStretchTest.cpp
-	echo ${CPP_FLAGS}
 	g++ src/process/process.cpp src/test/process/constrastStretchTest.cpp -o bin/constrastStretchTest ${CPP_FLAGS}
 	./bin/constrastStretchTest
 

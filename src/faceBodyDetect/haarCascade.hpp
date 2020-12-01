@@ -26,8 +26,11 @@ class HaarCascade : public FaceBodyDetection {
 
 	public:
 	
-	/** Constructor */
-	HaarCascade(float);
+	/** Default Constructor */
+	HaarCascade();
+
+	/** Constructor with scale */
+	HaarCascade(float scale);
 
 	/** Destructor */
 	virtual ~HaarCascade();

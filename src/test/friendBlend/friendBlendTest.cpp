@@ -11,8 +11,8 @@ using namespace cv;
 
 int main() {
 
-    Mat friend1 = imread("images/test2/friend1.png", IMREAD_COLOR);
-    Mat friend2 = imread("images/test2/friend2.png", IMREAD_COLOR);
+    Mat friend1 = imread("images/test1/friend1.jpg", IMREAD_COLOR);
+    Mat friend2 = imread("images/test1/friend2.jpg", IMREAD_COLOR);
 
     assert (!friend1.empty());
     assert (!friend2.empty());
