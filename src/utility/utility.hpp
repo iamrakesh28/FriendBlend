@@ -23,7 +23,7 @@ struct Position {
     const Position& operator= (const Position &pos);
 
     /** Conversion to object of Opencv Point class */
-    operator cv::Point();
+    operator cv::Point() const;
 };
 
 struct BoundingBox {

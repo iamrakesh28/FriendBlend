@@ -18,7 +18,7 @@ const Position& Position::operator= (const Position &pos) {
     return *this;
 }
 
-Position::operator cv::Point() {
+Position::operator cv::Point() const {
     return cv::Point(c, r);
 }
 
