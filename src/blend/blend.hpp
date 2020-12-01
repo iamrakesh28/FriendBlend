@@ -10,7 +10,7 @@ using namespace cv;
  * If distance between bounding boxes is equal or more than this
  * value, then we apply Alpha Blending, else we apply GrabCut
  */
-int DISTANCE_THRESHOLD = 200;
+const int DISTANCE_THRESHOLD = 200;
 
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,

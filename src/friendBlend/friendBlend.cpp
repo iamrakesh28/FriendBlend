@@ -16,7 +16,7 @@ FaceBodyDetection* getFaceBodyDetection() {
     return new HaarCascade();
 }
 
-Mat frendBlend(const Mat &inputImg1, const Mat &inputImg2) {
+Mat friendBlend(const Mat &inputImg1, const Mat &inputImg2) {
     Mat img1 = inputImg1.clone();
     Mat img2 = inputImg2.clone();
 

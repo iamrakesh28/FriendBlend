@@ -1,5 +1,5 @@
-#ifndef COLOR_CORRECT_HPP
-#define COLOR_CORRECT_HPP
+#ifndef FACE_BODY_DETECT_HPP
+#define FACE_BODY_DETECT_HPP
 
 /**
  * This is the header file you want to import if you
