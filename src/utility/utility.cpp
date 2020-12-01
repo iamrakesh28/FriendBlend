@@ -9,6 +9,8 @@ Position::Position(int r_, int c_):
 Position::Position(const Position &pos):
     r(pos.r), c(pos.c) {}
 
+Position::Position(): r(0), c(0) {}
+
 Position::~Position() {}
 
 const Position& Position::operator= (const Position &pos) {
@@ -32,6 +34,8 @@ BoundingBox::BoundingBox(const BoundingBox &boundingBox):
     topLeft(boundingBox.topLeft),
     bottomRight(boundingBox.bottomRight) {}
 
+BoundingBox::BoundingBox() {}
+
 BoundingBox::~BoundingBox() {}
 
 const BoundingBox& BoundingBox::operator= (const BoundingBox &boundingBox) {
@@ -52,6 +56,8 @@ FaceBodyBoundingBoxes::FaceBodyBoundingBoxes(
     const FaceBodyBoundingBoxes &faceBody
 ):
     face(faceBody.face), body(faceBody.body) {}
+
+FaceBodyBoundingBoxes::FaceBodyBoundingBoxes() {}
 
 FaceBodyBoundingBoxes::~FaceBodyBoundingBoxes() {}
 
