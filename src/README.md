@@ -22,7 +22,7 @@ src/
 |
 |__ faceBodyDetect/
 |    |__ faceBodyDetect.hpp
-|    |__ cfaceBodyDetection.hpp
+|    |__ faceBodyDetection.hpp
 |    |__ haarCascade.hpp
 |    |__ haarCascade.cpp
 |
@@ -41,5 +41,26 @@ src/
 |__ imgLog/
 |    |__ imgLog.hpp
 |    |__ imgLog.cpp
+|
 |__ test/
 ```
+
+* ```utility/```  </br>
+Defines some utility class such as Position, BoundingBox, etc.
+* ```process/```  </br>
+Defines some image processing algorithms like histogram equalization, clahe, etc.
+* ```colorCorrect/```  </br>
+Source code for different color correction algorithms are stored
+* ```faceBodyDetect/```  </br>
+Contains the face detection algorithms code
+* ```align/``` </br>
+Source code for keypoint detection, keypoint matching and finding homography is stored
+* ```blend/``` </br>
+Stores Blending algorithm source code
+* ```friendBlend/``` </br>
+Implements the friendBlend algorithm using the above algorithms
+* ```imgLog/``` </br>
+Implements the logger for the application
+* ```test/``` </br> 
+Contains codes for testing each algorithm as well as the application
+
