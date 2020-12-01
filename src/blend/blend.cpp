@@ -7,10 +7,27 @@
 
 using namespace cv;
 
+/**
+ * Computes the area of the bounding box
+ *
+ * @param boundingBox a rectangular box
+ * @return area of the bounding box 
+ */
+
 int computeArea(const BoundingBox &boundingBox) {
     return (boundingBox.bottomRight.r - boundingBox.topLeft.r)
     * (boundingBox.bottomRight.c - boundingBox.topLeft.c);
 }
+
+/**
+ * Uses grabCut to blend the two input images
+ *
+ * @param inputImg1 image having a person  in the left side
+ * @param inputImg2 image having a person in the right side
+ * @param faceBody1 bounding boxes for the face and body in inputImg1
+ * @param faceBody2 bounding boxes for the face and body in inputImg2
+ * @return blended image 
+ */
 
 Mat grabCut(
     const Mat &inputImg1, const Mat &inputImg2,
@@ -63,12 +80,24 @@ Mat grabCut(
     return outImg;
 }
 
+/**
+ * Blends a position in the image using Alpha Blending
+ * Used in the intermediate step of alphaBlend function
+ *
+ * @param leftColor color at a position of the left image
+ * @param rightColor color at a position of the right image
+ * @param stepSize one of the parameter used to find alpha
+ * @param stepCount one of the parameter used to find alpha 
+ * @return blended color at the given position
+ */
+
 Vec3b blendColor(
-	const Vec3b &leftColor,
-	const Vec3b &rightColor,
-	float stepSize,
-	int stepCount
+    const Vec3b &leftColor,
+    const Vec3b &rightColor,
+    float stepSize,
+    int stepCount
 ) {
+  
 	Vec3b newColor;
 	float alpha = stepCount * stepSize;
 	for (int channel = 0; channel < 3; channel++) {
@@ -79,6 +108,16 @@ Vec3b blendColor(
 	
 	return newColor;
 }
+
+/**
+ * Uses Alpha Blending to blend the two input images
+ *
+ * @param inputImg1 image having a person in the left side
+ * @param inputImg2 image having a person in the right side
+ * @param faceBody1 bounding boxes for the face and body in inputImg1
+ * @param faceBody2 bounding boxes for the face and body in inputImg2 
+ * @return blended image
+ */
 
 Mat alphaBlend(
     const Mat &inputImg1, const Mat &inputImg2, 
@@ -115,6 +154,16 @@ Mat alphaBlend(
     
     return outImg;
 }
+
+/**
+ * Blends the two input images using GrabCut or Alpha Blending algorithms
+ *
+ * @param inputImg1 first image having a person
+ * @param inputImg2 second image having a person
+ * @param faceBody1 bounding boxes for the face and body in inputImg1
+ * @param faceBody2 bounding boxes for the face and body in inputImg2 
+ * @return blended image
+ */
 
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,
