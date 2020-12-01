@@ -18,7 +18,7 @@ Mat grabCut(
     const FaceBodyBoundingBoxes &faceBody2
 ) {
     Mat outImg, personImg;
-    const FaceBodyBoundingBoxes person;
+    FaceBodyBoundingBoxes person;
 
     if(computeArea(faceBody1.face) <= computeArea(faceBody2.face)) {
         outImg = inputImg1;
@@ -34,11 +34,11 @@ Mat grabCut(
     // Mask initialized completely with obvious background
     Mat mask (personImg.rows, personImg.cols, CV_8UC1, GC_BGD);
     rectangle( // Body is probable foreground
-        mask, person.body.topLeft, person.body.topRight, 
+        mask, person.body.topLeft, person.body.bottomRight, 
         GC_PR_FGD, FILLED
     );
     rectangle( // Face is obvious foreground
-        mask, person.face.topLeft, person.fac.topRight, 
+        mask, person.face.topLeft, person.face.bottomRight, 
         GC_FGD, FILLED
     );
 
@@ -81,7 +81,7 @@ Vec3b blendColor(
 }
 
 Mat alphaBlend(
-    const Mat &inputImg1, const Mat &inputImg2,
+    const Mat &inputImg1, const Mat &inputImg2, 
     const FaceBodyBoundingBoxes &faceBody1,
     const FaceBodyBoundingBoxes &faceBody2
 ) {
@@ -105,8 +105,8 @@ Mat alphaBlend(
     for (int col = colStart; col <= colEnd; col++) {
     	int stepCount = col - colStart;
         for (int row = 0; row < inputImg2.rows; row++) {
-            Vec3b &leftColor = inputImg1.at <Vec3b> (row, col);
-            Vec3b &rightColor = inputImg1.at <Vec3b> (row, col);
+            Vec3b leftColor = inputImg1.at <Vec3b> (row, col);
+            Vec3b rightColor = inputImg1.at <Vec3b> (row, col);
             
             Vec3b newColor = blendColor(leftColor, rightColor, stepSize, stepCount);
             outImg.at <Vec3b> (row, col) = newColor;
@@ -124,7 +124,7 @@ Mat blend(
     assert (
         inputImg1.rows == inputImg2.rows
         &&
-        inputImg1.cols == inputImg2.cols;
+        inputImg1.cols == inputImg2.cols
     );
 
     Mat img1, img2;
