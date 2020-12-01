@@ -31,6 +31,59 @@ Mat grabCut(
     
 }
 
+Vec3b blendColor(
+	const Vec3b &leftColor,
+	const Vec3b &rightColor,
+	float stepSize,
+	int stepCount
+) {
+	Vec3b newColor;
+	float alpha = stepCount * stepSize;
+	for (int channel = 0; channel < 3; channel++) {
+		float intensity = (1 - alpha) * leftColor.val[channel]
+			+ alpha * rightColor.val[channel];
+		newColor.val[channel] = uchar(intensity);
+	}
+	
+	return newColor;
+}
+
+Mat alphaBlend(
+    const Mat &inputImg1, const Mat &inputImg2,
+    const FaceBodyBoundingBoxes &faceBody1,
+    const FaceBodyBoundingBoxes &faceBody2
+) {
+
+    Mat outImg = inputImg1.clone();
+    
+    int colStart = faceBody1.body.bottomRight.c;
+    int colEnd = faceBody2.body.topLeft.c;
+
+    /** copy the inputImg2 content right of colEnd */
+    for (int col = colEnd + 1; col < inputImg2.cols; col++) {
+        for (int row = 0; row < inputImg2.rows; row++) {
+            Vec3b color = inputImg2.at <Vec3b> (row, col);
+            outImg.at <Vec3b> (row, col) = color;
+        }
+    }
+
+	float stepSize = 1 / (float)(colEnd - colStart);
+	
+    /** performs alpha blending  */
+    for (int col = colStart; col <= colEnd; col++) {
+    	int stepCount = col - colStart;
+        for (int row = 0; row < inputImg2.rows; row++) {
+            Vec3b &leftColor = inputImg1.at <Vec3b> (row, col);
+            Vec3b &rightColor = inputImg1.at <Vec3b> (row, col);
+            
+            Vec3b newColor = blendColor(leftColor, rightColor, stepSize, stepCount);
+            outImg.at <Vec3b> (row, col) = newColor;
+        }
+    }
+    
+    return outImg;
+}
+
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,
     const FaceBodyBoundingBoxes &faceBody1,
