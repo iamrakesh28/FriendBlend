@@ -9,7 +9,7 @@
 using namespace cv;
 
 ColorCorrection* getColorCorrection() {
-    return new ClaheMethod();
+    return new HistogramEqualizeMethod();
 }
 
 FaceBodyDetection* getFaceBodyDetection() {
