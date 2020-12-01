@@ -12,6 +12,9 @@ struct Position {
 
     /** Copy Constructor */
     Position(const Position &pos);
+  
+    /** Default Constructor */
+    Position();  
 
     /** Destructor */
     ~Position();
@@ -35,7 +38,10 @@ struct BoundingBox {
 
     /** Copy Constructor */
     BoundingBox(const BoundingBox &boundingBox);
-
+  
+    /** Default Constructor */
+    BoundingBox();
+  
     /** Destructor */
     ~BoundingBox();
 
@@ -59,6 +65,9 @@ struct FaceBodyBoundingBoxes {
     /** Copy Constructor */
     FaceBodyBoundingBoxes(const FaceBodyBoundingBoxes &faceBody);
 
+    /** Default Constructor */
+    FaceBodyBoundingBoxes();
+  
     /** Destructor */
     ~FaceBodyBoundingBoxes();
 

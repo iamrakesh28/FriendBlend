@@ -38,6 +38,8 @@ int main() {
 
   
     vector<string> imagePaths = {
+        "images/test1/friend1.jpg",
+        "images/test1/friend2.jpg",
         "images/devansh.jpg",
         "images/rakesh.jpg",
         "images/md.jpg",

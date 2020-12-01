@@ -1,6 +1,7 @@
 
 CPP_FLAGS=`pkg-config --cflags --libs opencv4` -std=c++11 -I src
 
+Req=src/utility/utility.cpp src/process/process.cpp src/colorCorrect/claheMethod.cpp src/colorCorrect/histogramEqualizeMethod.cpp src/faceBodyDetect/haarCascade.cpp src/align/align.cpp src/blend/blend.cpp src/friendBlend/friendBlend.cpp
 
 # Tests
 
@@ -45,3 +46,15 @@ test_faceBodyDetect_haarCascade: src/process/process.cpp src/utility/utility.cpp
 test_align: src/utility/utility.cpp src/align/align.cpp src/faceBodyDetect/haarCascade.cpp src/test/align/alignTest.cpp
 	g++ src/utility/utility.cpp src/align/align.cpp src/faceBodyDetect/haarCascade.cpp src/test/align/alignTest.cpp -o bin/alignTest ${CPP_FLAGS}
 	./bin/alignTest
+
+# Blend
+
+test_blend: src/utility/utility.cpp src/blend/blend.cpp src/faceBodyDetect/haarCascade.cpp src/test/blend/blendTest.cpp
+	g++ src/utility/utility.cpp src/blend/blend.cpp src/faceBodyDetect/haarCascade.cpp src/test/blend/blendTest.cpp -o bin/blendTest ${CPP_FLAGS}
+	./bin/blendTest
+
+# Friend Blend
+
+test_friendBlend: ${Req} src/test/friendBlend/friendBlendTest.cpp
+	g++ ${Req} src/test/friendBlend/friendBlendTest.cpp -o bin/friendBlendTest ${CPP_FLAGS}
+	./bin/friendBlendTest
