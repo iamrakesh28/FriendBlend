@@ -9,12 +9,20 @@ using namespace cv;
 
 int main() {
 
-    string imgPath = "images/vaderBright.jpeg";
-    Mat image = imread(imgPath, IMREAD_COLOR);
+    vector<string> imgPaths = {
+        "images/process/vaderBright.jpeg",
+        "images/process/carBright.jpg"
+    };
 
-    histogramEqualize(image);
-    imshow("Histogram Equalized Image", image);
-    (void) waitKey(0);
+    for(const string &imgPath : imgPaths) {
+        Mat inputImage = imread(imgPath, IMREAD_COLOR);
+        Mat image = inputImage.clone();
+
+        histogramEqualize(image);
+        imshow("CLAHE performed on Image", image);
+        imshow("Original Image", inputImage);
+        (void) waitKey(0);
+    }
 
     return 0;
 }

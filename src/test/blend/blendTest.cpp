@@ -13,20 +13,24 @@ using namespace cv;
 
 int main() {
 
-    Mat friend1 = imread("images/test1/friend1.jpg", IMREAD_COLOR);
-    Mat friend2 = imread("images/test1/friend2.jpg", IMREAD_COLOR);
+    vector<string> testDir = {"images/test1", "images/test2"};
 
-    assert (!friend1.empty());
-    assert (!friend2.empty());
+    for(const string &dir : testDir) {
+        Mat friend1 = imread(dir + "/friend1.jpg", IMREAD_COLOR);
+        Mat friend2 = imread(dir + "/friend2.jpg", IMREAD_COLOR);
 
-    FaceBodyDetection *faceBodyDetection = new HaarCascade();
-    FaceBodyBoundingBoxes faceBody1 = faceBodyDetection->detect(friend1);
-    FaceBodyBoundingBoxes faceBody2 = faceBodyDetection->detect(friend2);
-    delete faceBodyDetection;
+        assert (!friend1.empty());
+        assert (!friend2.empty());
 
-    Mat outImg = blend(friend1, friend2, faceBody1, faceBody2);
-    imshow("Blended Image", outImg);
-    (void) waitKey(0);
+        FaceBodyDetection *faceBodyDetection = new HaarCascade();
+        FaceBodyBoundingBoxes faceBody1 = faceBodyDetection->detect(friend1);
+        FaceBodyBoundingBoxes faceBody2 = faceBodyDetection->detect(friend2);
+        delete faceBodyDetection;
+
+        Mat outImg = blend(friend1, friend2, faceBody1, faceBody2);
+        imshow("Blended Image", outImg);
+        (void) waitKey(0);
+    }
 
     return 0;
 }

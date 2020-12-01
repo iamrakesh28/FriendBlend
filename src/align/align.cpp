@@ -5,6 +5,7 @@
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/features2d.hpp>
 #include <opencv2/imgproc.hpp>
+#include <imgLog/imgLog.hpp>
 #include <align/align.hpp>
 
 using namespace std;
@@ -112,8 +113,28 @@ void alignImage(
     keypointDetection(orb, imgToAlignGray, bodyAlign, keypoints1, descriptors1);
     keypointDetection(orb, imgReferenceGray, bodyReference, keypoints2, descriptors2);
 
+    if(ImageLog::getLogger().enabled()) {
+        Mat keypointImageAlign, keypointImageReference;
+        Scalar color (0, 0, 255);
+
+        drawKeypoints(imgToAlign, keypoints1, keypointImageAlign, color);
+        ImageLog::getLogger().logImage(keypointImageAlign, "imageToAlignKey");
+
+        drawKeypoints(imgReference, keypoints2, keypointImageReference, color);
+        ImageLog::getLogger().logImage(keypointImageReference, "imageReferenceKey");
+    }
+
     vector<DMatch> matches;
     keypointMatching(descriptors1, descriptors2, matches);
+
+    if(ImageLog::getLogger().enabled()) {
+        Mat matchImage;
+        drawMatches(
+            imgToAlign, keypoints1, imgReference, keypoints2, 
+            matches, matchImage
+        );
+        ImageLog::getLogger().logImage(matchImage, "matchImage");
+    }
 
     vector<Point2f> points1, points2;
     for(size_t i = 0; i < matches.size(); i++ ) {
@@ -123,4 +144,6 @@ void alignImage(
 
     Mat homography = findHomography(points1, points2, RANSAC);
     warpPerspective(imgToAlign, imgToAlign, homography, imgReference.size());
+
+    ImageLog::getLogger().logImage(imgToAlign, "alignedImage");
 }
