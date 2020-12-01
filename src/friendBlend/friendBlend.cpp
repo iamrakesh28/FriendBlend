@@ -3,6 +3,7 @@
 #include <colorCorrect/colorCorrect.hpp>
 #include <faceBodyDetect/faceBodyDetect.hpp>
 #include <align/align.hpp>
+#include <blend/blend.hpp>
 #include <friendBlend/friendBlend.hpp>
 
 using namespace cv;
@@ -30,5 +31,5 @@ Mat frendBlend(const Mat &inputImg1, const Mat &inputImg2) {
 
     alignImage(img2, img1, faceBody2.body, faceBody1.body);
 
-
+    return blend(img1, img2, faceBody1, faceBody2);
 }
