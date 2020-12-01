@@ -9,19 +9,24 @@ using namespace cv;
 
 int main() {
 
-    string imgPath = "images/vaderBright.jpeg";
-    Mat inputImage = imread(imgPath, IMREAD_COLOR);
-    Mat image;
+    vector<string> imgPaths = {
+        "images/process/vaderBright.jpeg",
+        "images/process/carBright.jpg"
+    };
 
-    image = inputImage.clone();
-    contrastStretch(image, ON_Y_CHANNEL);
-    imshow("Contrast Stretched Image - Y Channel", image);
-    (void) waitKey(0);
+    for(const string &imgPath : imgPaths) {
+        Mat inputImage = imread(imgPath, IMREAD_COLOR);
+        Mat imageContrastY = inputImage.clone();
+        Mat imageEachIndep = inputImage.clone();
 
-    image = inputImage.clone();
-    contrastStretch(image, EACH_CHANNEL_INDEPENDENT);
-    imshow("Contrast Stretched Image - Y Channel", image);
-    (void) waitKey(0);
+        contrastStretch(imageContrastY, ON_Y_CHANNEL);
+        contrastStretch(imageEachIndep, EACH_CHANNEL_INDEPENDENT);
+
+        imshow("Original Image", inputImage);
+        imshow("Contrast Stretched Image - Y Channel", imageContrastY);
+        imshow("Contrast Stretched Image - Independent", imageEachIndep);
+        (void) waitKey(0);
+    }    
 
     return 0;
 }

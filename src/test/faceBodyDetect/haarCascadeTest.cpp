@@ -37,16 +37,13 @@ void testOnImage(const string &imgPath) {
 int main() {
 
     vector<string> imagePaths = {
-        "images/test1/friend1.jpg",
-        "images/test1/friend2.jpg",
-	    "images/devansh1.jpg",
-        "images/devansh2.jpg",
-        "images/rahul1.jpg",
-        "images/rahul2.jpg",
-        "images/md.jpg",
-        "images/vaibhav.jpg",
-        "images/ahmed.jpg",
-        "images/alexxis.jpg"
+        "images/faceBody/devansh1.jpg",
+        "images/faceBody/devansh2.jpg",
+        "images/faceBody/rahul1.jpg",
+        "images/faceBody/rahul2.jpg",
+        "images/faceBody/rakesh.jpg",
+        "images/faceBody/ahmed.jpg",
+        "images/faceBody/vaibhav.jpg"
     };
     
     for(const string &imgPath : imagePaths)

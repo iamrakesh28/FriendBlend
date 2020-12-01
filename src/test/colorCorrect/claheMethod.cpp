@@ -9,8 +9,8 @@ using namespace cv;
 
 int main() {
 
-    Mat img1 = imread("images/ghostBright.jpg", IMREAD_COLOR);
-    Mat img2 = imread("images/ghostDark.jpg", IMREAD_COLOR);
+    Mat img1 = imread("images/colorCorrect/ghostBright.jpg", IMREAD_COLOR);
+    Mat img2 = imread("images/colorCorrect/ghostDark.jpg", IMREAD_COLOR);
 
     assert(!img1.empty());
     assert(!img2.empty());
