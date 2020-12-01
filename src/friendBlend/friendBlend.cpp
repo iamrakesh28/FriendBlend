@@ -12,8 +12,8 @@ ColorCorrection* getColorCorrection() {
     return new ClaheMethod();
 }
 
-FaceBodyDetection* getFaceBodyDetection(float scale) {
-  return new HaarCascade(scale);
+FaceBodyDetection* getFaceBodyDetection() {
+  return new HaarCascade();
 }
 
 Mat friendBlend(const Mat &inputImg1, const Mat &inputImg2) {
@@ -24,7 +24,7 @@ Mat friendBlend(const Mat &inputImg1, const Mat &inputImg2) {
     colorCorrection->colorCorrect(img1, img2);
     delete colorCorrection;
 
-    FaceBodyDetection *faceBodyDetection = getFaceBodyDetection(1.27);
+    FaceBodyDetection *faceBodyDetection = getFaceBodyDetection();
     FaceBodyBoundingBoxes faceBody1 = faceBodyDetection->detect(img1);
     FaceBodyBoundingBoxes faceBody2 = faceBodyDetection->detect(img2);
     delete faceBodyDetection;

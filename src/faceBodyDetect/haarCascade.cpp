@@ -9,6 +9,17 @@
 using namespace std;
 using namespace cv; 
 	
+HaarCascade::HaarCascade() : scale(1.27) {
+
+	// path of the face cascade
+	string faceCascadePath = 
+		"/usr/local/share/opencv4/"
+		"haarcascades/haarcascade_frontalface_alt.xml";
+		
+	// load the face cascade
+	assert (faceCascade.load(faceCascadePath));
+}
+
 HaarCascade::HaarCascade(float scale_) : scale(scale_) {
 
 	// path of the face cascade
