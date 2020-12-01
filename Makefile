@@ -49,12 +49,12 @@ test_align: src/utility/utility.cpp src/align/align.cpp src/faceBodyDetect/haarC
 
 # Blend
 
-test_blend: src/utility/utility.cpp src/blend/blend.cpp src/test/blend/blend.cpp
-	g++ src/utility/utility.cpp src/blend/blend.cpp sr/test/blend/blend.cpp -o bin/blendTest ${CPP_FLAGS}
+test_blend: src/utility/utility.cpp src/blend/blend.cpp src/faceBodyDetect/haarCascade.cpp src/test/blend/blendTest.cpp
+	g++ src/utility/utility.cpp src/blend/blend.cpp src/faceBodyDetect/haarCascade.cpp src/test/blend/blendTest.cpp -o bin/blendTest ${CPP_FLAGS}
 	./bin/blendTest
 
 # Friend Blend
 
-test_friendBlend: ${Req} src/test/friendBlend/friendBlend.cpp
-	g++ ${Req} src/test/friendBlend/friendBlend.cpp -o bin/friendBlendTest ${CPP_FLAGS}
+test_friendBlend: ${Req} src/test/friendBlend/friendBlendTest.cpp
+	g++ ${Req} src/test/friendBlend/friendBlendTest.cpp -o bin/friendBlendTest ${CPP_FLAGS}
 	./bin/friendBlendTest

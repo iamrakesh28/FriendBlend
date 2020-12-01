@@ -4,9 +4,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-#include <faceBodyDetect/faceBodyDetect.hpp>
-#include <utility/utility.hpp>
-#include <blend/blend.hpp>
+#include <friendBlend/friendBlend.hpp>
 
 using namespace std;
 using namespace cv;
@@ -19,12 +17,8 @@ int main() {
     assert (!friend1.empty());
     assert (!friend2.empty());
 
-    FaceBodyDetection *faceBodyDetection = new HaarCascade();
-    FaceBodyBoundingBoxes faceBody1 = faceBodyDetection->detect(friend1);
-    FaceBodyBoundingBoxes faceBody2 = faceBodyDetection->detect(friend2);
-    delete faceBodyDetection;
 
-    Mat outImg = blend(friend1, friend2, faceBody1, faceBody2);
+    Mat outImg = friendBlend(friend1, friend2);
     imshow("Blended Image", outImg);
     (void) waitKey(0);
 

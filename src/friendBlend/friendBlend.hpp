@@ -5,6 +5,6 @@
 
 using namespace cv;
 
-Mat frendBlend(const Mat &inputImg1, const Mat &inputImg2);
+Mat friendBlend(const Mat &inputImg1, const Mat &inputImg2);
 
 #endif
