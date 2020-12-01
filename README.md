@@ -39,5 +39,10 @@ After we have found a good set of keypoint matches, homography is find using RAN
 FriendBlend uses two techniques to merge the images depending on whether the persons are close or far apart.
 
 #### a. Persons Far Apart : 
-We blend the region between the bounding box of the persons using Alpha blending. The blended image on the left
-    b. Persons Close Together : Grabcut
+We blend the region between the bounding box of the persons using Alpha blending. The left region
+from the left person image and the right region from the right persion image is copied directly into the 
+final blended image.
+    
+#### b. Persons Close Together
+When the persons are close, the person which appears in front is cropped in the foreground using GrabCut. This cropped
+pixels of the person is put on the top of the other image to get the final blended image.
