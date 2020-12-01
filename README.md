@@ -22,11 +22,22 @@ We have two image merging process : Alpha blending and Grabcut. Depending on the
 the image merging or blending chosen. To find the location of the human, we detect the face and get the bounding
 box using Haar Cascade models in OpenCV. From the face bounding box, we estimate the bounding box for the human body.
     
-3. Homography Estimation
+### 3. Images alignment
+The images need to be aligned before we merge them. We compute a homography to warp one of the images so that the perspectives from the two photos are the same prior to merging.
 
-    a. Keypoint Detection
-    b. Keypoint Matching
-    c. Computing the Homography
-4. Image Blending
-    a. Persons Far Apart : Alpha blending
+####  a. Keypoint Detection
+Our application uses Oriented FAST and Rotated BRIEF (ORB) detector for keypoint detection in the images. Further,
+we also prune the keypoints inside the bounding boxe of the humans.
+
+####  b. Keypoint Matching
+Keypoints in the two images are matched by Hamming distance using Brute Force Matcher. 
+
+####  c. Computing the Homography
+After we have found a good set of keypoint matches, homography is find using RANSAC based method.
+
+### 4. Image Blending
+FriendBlend uses two techniques to merge the images depending on whether the persons are close or far apart.
+
+#### a. Persons Far Apart : 
+We blend the region between the bounding box of the persons using Alpha blending. The blended image on the left
     b. Persons Close Together : Grabcut
