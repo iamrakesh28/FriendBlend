@@ -18,23 +18,26 @@ class HaarCascade : public FaceBodyDetection {
 	/** Location of Face Cascade in the Filesystem */
 	const string faceCasecadeLoc;
 
+	/** scaleFactor used in Haar-Cascade Detection */
+	float scale;
+  
 	/** Face Cascade Classifier */
 	CascadeClassifier faceCascade;
 
 	public:
 	
 	/** Constructor */
-	HaarCascade();
+	HaarCascade(float);
 
 	/** Destructor */
 	virtual ~HaarCascade();
 	
 	/**
-     * Detect a Face and Body in the provided image
-     * 
-     * @param img The image in BGR format
-     * @return Bounding Boxes for the Face and Body
-     */
+	 * Detect a Face and Body in the provided image
+	 * 
+	 * @param img The image in BGR format
+	 * @return Bounding Boxes for the Face and Body
+	 */
 	virtual FaceBodyBoundingBoxes detect(const Mat &img);
 };
 

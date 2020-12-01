@@ -16,7 +16,7 @@ int main() {
     assert (!imgToAlign.empty());
     assert (!imgReference.empty());
 
-    FaceBodyDetection *faceBodyDetection = new HaarCascade();
+    FaceBodyDetection *faceBodyDetection = new HaarCascade(1.27);
     FaceBodyBoundingBoxes faceBody1 = faceBodyDetection->detect(imgToAlign);
     FaceBodyBoundingBoxes faceBody2 = faceBodyDetection->detect(imgReference);
     delete faceBodyDetection;
