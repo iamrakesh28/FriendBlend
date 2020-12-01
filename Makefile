@@ -3,6 +3,11 @@ CPP_FLAGS=`pkg-config --cflags --libs opencv4` -std=c++11 -I src
 
 Req=src/imgLog/imgLog.cpp src/utility/utility.cpp src/process/process.cpp src/colorCorrect/claheMethod.cpp src/colorCorrect/histogramEqualizeMethod.cpp src/faceBodyDetect/haarCascade.cpp src/align/align.cpp src/blend/blend.cpp src/friendBlend/friendBlend.cpp
 
+# Run
+
+friendBlend: ${Req} src/test/friendBlend.cpp
+	g++ ${Req} src/test/friendBlend.cpp -o bin/friendBlend ${CPP_FLAGS}
+
 # Tests
 
 # Process
