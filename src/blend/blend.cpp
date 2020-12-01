@@ -13,7 +13,6 @@ using namespace cv;
  * @param boundingBox a rectangular box
  * @return area of the bounding box 
  */
-
 int computeArea(const BoundingBox &boundingBox) {
     return (boundingBox.bottomRight.r - boundingBox.topLeft.r)
     * (boundingBox.bottomRight.c - boundingBox.topLeft.c);
@@ -22,13 +21,12 @@ int computeArea(const BoundingBox &boundingBox) {
 /**
  * Uses grabCut to blend the two input images
  *
- * @param inputImg1 image having a person  in the left side
+ * @param inputImg1 image having a person in the left side
  * @param inputImg2 image having a person in the right side
  * @param faceBody1 bounding boxes for the face and body in inputImg1
  * @param faceBody2 bounding boxes for the face and body in inputImg2
  * @return blended image 
  */
-
 Mat grabCut(
     const Mat &inputImg1, const Mat &inputImg2,
     const FaceBodyBoundingBoxes &faceBody1,
@@ -90,7 +88,6 @@ Mat grabCut(
  * @param stepCount one of the parameter used to find alpha 
  * @return blended color at the given position
  */
-
 Vec3b blendColor(
     const Vec3b &leftColor,
     const Vec3b &rightColor,
@@ -118,7 +115,6 @@ Vec3b blendColor(
  * @param faceBody2 bounding boxes for the face and body in inputImg2 
  * @return blended image
  */
-
 Mat alphaBlend(
     const Mat &inputImg1, const Mat &inputImg2, 
     const FaceBodyBoundingBoxes &faceBody1,
@@ -164,7 +160,6 @@ Mat alphaBlend(
  * @param faceBody2 bounding boxes for the face and body in inputImg2 
  * @return blended image
  */
-
 Mat blend(
     const Mat &inputImg1, const Mat &inputImg2,
     const FaceBodyBoundingBoxes &faceBody1,
