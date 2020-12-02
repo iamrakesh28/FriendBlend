@@ -134,3 +134,6 @@ pixels of the person is put on the top of the other image to get the final blend
   <em> (a) Grabcut </em>
 </p>
 </br>
+
+### References
+[1] https://web.stanford.edu/class/ee368/Project_Spring_1415/Reports/Chen_Zeng.pdf
