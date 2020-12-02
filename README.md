@@ -5,9 +5,15 @@ takes photo of person A with the same background. The application produces a ble
 image. </br>
 The application is implemented in C++ and the implementations depends on OpenCV liibrary.
 
-## Run
-Put the images int .. </br>
-To run the application, type `make test_friendBlend`. </br>
+## Compile and Run
+To compile the source code, run `make friendBlend` in the top directory of the application. </br>
+To run the application, type `./bin/friendBlend path/to/image1 path/to/image2`. `path/to/image1`
+  and `path/to/image2` are the location of the images which you want to blend. To log each step
+  result, an extra argument `log` can be passed. </br>
+  ```
+  make friendBlend
+  ./bin/friendBlend images/test6/friend1.jpg images/test6/friend2.jpg log
+  ```
 These two images were blended together using the application to produce the following blended image.
 
 ## Working of the Application
