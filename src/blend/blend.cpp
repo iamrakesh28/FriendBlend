@@ -66,8 +66,6 @@ Mat grabCut(
         GC_INIT_WITH_MASK
     );
 
-    ImageLog::getLogger().logImage(mask, "grabCutMask");
-
     // Place foreground on background
     for(int r = 0; r < outImg.rows;r++) {
         for(int c = 0;c < outImg.cols;c++) {
