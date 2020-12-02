@@ -6,9 +6,11 @@ image. </br>
 The application is implemented in C++ and the implementations depends on OpenCV liibrary.
 
 ## Compile and Run
-To compile the source code, run `make friendBlend` in the top directory of the application. </br>
-To run the application, type `./bin/friendBlend path/to/image1 path/to/image2`. `path/to/image1`
-  and `path/to/image2` are the location of the images which you want to blend. To log each step
+To compile the source code, run 
+``` make friendBlend ``` 
+in the top directory of the application. </br>
+To run the application, type ``` ./bin/friendBlend path/to/image1 path/to/image2 ```. </br>
+```path/to/image1``` and ```path/to/image2``` are the location of the images which you want to blend. To log each step
   result, an extra third argument `log` can be passed. </br>
   ```
   make friendBlend
