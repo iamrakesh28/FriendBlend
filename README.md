@@ -19,7 +19,7 @@ To run the application, type ``` ./bin/friendBlend path/to/image1 path/to/image2
 These two images were blended together using the application to produce the following blended image. </br> </br>
 <img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend1.jpg" width="300">
 <img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend2.jpg" width="325">
-<img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend2.jpg" width="325">
+<img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/others/example1/blendOut_10.jpg" width="325">
 
 
 ## Working of the Application
