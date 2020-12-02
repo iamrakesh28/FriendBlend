@@ -5,10 +5,22 @@ takes photo of person A with the same background. The application produces a ble
 image. </br>
 The application is implemented in C++ and the implementations depends on OpenCV liibrary.
 
-## Run
-Put the images int .. </br>
-To run the application, type `make test_friendBlend`. </br>
-These two images were blended together using the application to produce the following blended image.
+## Compile and Run
+To compile the source code, run 
+``` make friendBlend ``` 
+in the top directory of the application. </br>
+To run the application, type ``` ./bin/friendBlend path/to/image1 path/to/image2 ```. </br>
+```path/to/image1``` and ```path/to/image2``` are the location of the images which you want to blend. To log each step
+  result, an extra third argument `log` can be passed. </br>
+  ```
+  make friendBlend
+  ./bin/friendBlend images/test1/friend1.jpg images/test1/friend2.jpg log
+  ```
+These two images were blended together using the application to produce the following blended image. </br> </br>
+<img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend1.jpg" width="300">
+<img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend2.jpg" width="325">
+<img src="https://github.com/iamrakesh28/FriendBlend/blob/main/images/test2/friend2.jpg" width="325">
+
 
 ## Working of the Application
 There are four stpes involved behind the working algorithm of the application:
