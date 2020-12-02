@@ -24,8 +24,7 @@ int main(int argc, char *argv[]) {
     assert (!friend2.empty());
 
     Mat outImg = friendBlend(friend1, friend2);
-    imshow("Blended Image", outImg);
-    (void) waitKey(0);
+    imwrite("images/blendedImage.jpg", outImg);
 
     return 0;
 }
